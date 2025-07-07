@@ -1,0 +1,137 @@
+'use client'
+import { motion } from "framer-motion";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+
+
+
+export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
+  const [expandedStates, setExpandedStates] = useState<Record<string, boolean>>({});
+  const [expandAll, setExpandAll] = useState(false);
+
+  const toggleDisclosure = (id: string) => {
+    setExpandedStates(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const handleExpandAll = () => {
+    const newExpandAll = !expandAll;
+    setExpandAll(newExpandAll);
+
+    const newStates: Record<string, boolean> = {};
+    curriculum.forEach((module, index) => {
+      newStates[`module-${index}`] = newExpandAll;
+    });
+    setExpandedStates(newStates);
+  };
+
+  const totalLectures = curriculum?.reduce((count: number, module: any) => {
+    return count + (module.lectures?.length || 0);
+  }, 0);
+  
+
+
+  
+
+  return (
+    <div className="w-full">
+ 
+      {/* Expand All Button */}
+      <div onClick={handleExpandAll} className="w-full flex items-center justify-between cursor-pointer mb-5">
+        <h3 className='text-2xl text-black font-semibold mb-4'>Curriculum</h3>
+        <div className="flex items-center gap-1">
+          <span className='text-sm text-primary1 font-medium'>{!expandAll ? 'Expand all' : 'Collapse all'}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={21} fill="none" viewBox="0 0 20 21">
+            <path d="M15 8.5L10 13.5L5 8.5" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="w-full flex items-center justify-between mb-5">
+        <div className="flex items-center gap-2">
+          <Image src="/cf_collection.svg" width={20} height={20} alt='no-img' />
+          <p className='text-sm text-gray5'><span>{curriculum.length}</span> Modules</p>
+        </div>
+        <div className="flex items-center w-fit gap-2">
+          <div className="flex items-center gap-2">
+            <Image src="/d_book-open.svg" width={20} height={20} alt='no-img' />
+            <p className='text-sm text-gray5 flex gap-1'><span>{totalLectures}</span> <span className="hidden md:block">Lectures</span></p>
+          </div>
+        </div>
+      </div>
+      {/* Modules */}
+      <div className="w-full space-y-4">
+        {curriculum?.map((module, index) => {
+          const moduleId = `module-${index}`;
+          return (
+            <div key={moduleId}>
+              {/* Module Toggle */}
+              <button
+                onClick={() => toggleDisclosure(moduleId)}
+                className="group flex w-full sm:flex-row flex-col gap-2 sm:items-center justify-between md:px-6 md:py-5 p-3 bg-neutral5 border border-neutral3 rounded-xl"
+              >
+                <div className="flex items-center gap-2">
+                  <span className={`size-5 inline-flex items-center justify-center transition-transform duration-300 ${expandedStates[moduleId] ? "rotate-90" : ""}`}>
+                    <Image src={'/cheveron-right.svg'} width={20} height={24} alt='chevron' />
+                  </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="md:text-lg text-base text-start font-semibold text-neutral2">{module.title}</span>
+                    {module.previewlink && (
+                      <span className="text-sm font-medium bg-primary/10 px-2 py-1 rounded-full text-primary1">Preview</span>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              {/* Module Lectures */}
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{
+                  height: expandedStates[moduleId] ? "auto" : 0,
+                  opacity: expandedStates[moduleId] ? 1 : 0
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="text-base text-neutral2 md:px-4 px-0 pb-4 py-4 mt-4">
+                  {module.description && (
+                    <h3 className='md:text-base text-sm text-black mb-2'>{module.description}</h3>
+                  )}
+                  <ul>
+                    {module?.lectures?.map((lecture: any, lecIdx: number) => (
+                      <li key={`lec-${index}-${lecIdx}`} className='md:py-2 py-1.5'>
+                        <Link href={"#"} className='flex items-center gap-3 justify-between sm:text-base text-sm text-black hover:text-primary1 font-medium'>
+                          <div className="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" viewBox="0 0 20 20">
+                              <path
+                                d="M13.125 8.75L17.0581 4.81694C17.4518 4.42321 18.125 4.70207 18.125 5.25888V14.7411C18.125 15.2979 17.4518 15.5768 17.0581 15.1831L13.125 11.25M3.75 15.625H11.25C12.2855 15.625 13.125 14.7855 13.125 13.75V6.25C13.125 5.21447 12.2855 4.375 11.25 4.375H3.75C2.71447 4.375 1.875 5.21447 1.875 6.25V13.75C1.875 14.7855 2.71447 15.625 3.75 15.625Z"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span>{lecture.title}</span>
+                          </div>
+                          <div className="flex items-center sm:gap-3 gap-2">
+                            {lecture.previewUrl && (
+                              <span className='text-primary1 bg-primary/10 rounded-full sm:text-sm text-xs px-2 py-1'>Preview</span>
+                            )}
+                            <span className='sm:text-base text-sm text-gray5'>{lecture.duration}</span>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
