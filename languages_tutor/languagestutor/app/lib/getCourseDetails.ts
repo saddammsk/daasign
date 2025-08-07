@@ -6,5 +6,3 @@ export async function getCourse(slug: string) {
   const course = await sanityClient.fetch(query, params);
   return course;
 }
-
-

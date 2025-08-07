@@ -1,11 +1,13 @@
 import React from 'react'
 import Image from "next/image";
+import { useTranslations } from 'next-intl'
 
 const TeachingMarqueeSection = () => {
+  const t = useTranslations()
   return (
      <section className="w-full lg:py-16 py-10">
         <div className="w-full max-w-[1340px] px-5 mx-auto">
-          <h2 className="text-base text-gray5 font-medium text-center">Teaching brilliant designers worldwide</h2>
+          <h2 className="text-base text-gray5 font-medium text-center">{t('teaching_brilliant_designers_worldwide')}</h2>
           <div className="w-full overflow-hidden relative">
             <div className="absolute left-0 top-5 w-20 h-full bg-gradient-to-r from-neutral1 to-transparent z-10 "></div>
             <div className="absolute right-0 top-5 w-20 h-full bg-gradient-to-l from-neutral1 to-transparent z-10 "></div>

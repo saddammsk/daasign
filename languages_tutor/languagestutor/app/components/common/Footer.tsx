@@ -6,13 +6,14 @@ import twitter from '../../../public/_X.svg'
 import linkedin from '../../../public/LinkedIn.svg'
 import youtube from '../../../public/Youtube.svg'
 import Link from 'next/link'
-import { allCoursesQuery } from '@/app/lib/queries'
-import { sanityClient } from '@/app/lib/sanity'
-import { urlFor } from '@/app/lib/sanityImage'
-import Translate from './Translate'
+import { allCoursesQuery } from '../../lib/queries'
+import { sanityClient } from '../../lib/sanity'
+import { urlFor } from '../../lib/sanityImage'
+import { getTranslations } from 'next-intl/server'
 
 
-const Footer = async () => {
+export default async function Footer() {
+  const t = await getTranslations()
      const courses = await sanityClient.fetch(allCoursesQuery)
 
 
@@ -22,12 +23,12 @@ const Footer = async () => {
     <div className="w-full flex md:flex-row flex-col gap-5">
         <div className="md:w-1/4">
         <Image src={'/lang-logo.svg'} width={185} height={34} className='h-9 w-fit mb-2' alt='footer logo' />
-        <p className='text-sm text-gray5 mb-3'>   <Translate tKey="footer-para_1" Tag="span" /> Language Tutor – <Translate tKey="footer-para_2" Tag="span" /> </p>
-        <p className='text-sm text-gray5'><Translate tKey="footer-para_3" Tag="span" />
+        <p className='text-sm text-gray5 mb-3'>   <span>{t('footer-para_1')}</span> Language Tutor – <span>{t('footer-para_2')}</span> </p>
+        <p className='text-sm text-gray5'><span>{t('footer-para_3')}</span>
         </p>
         </div>
         <div className="md:w-1/3">
-            <h3 className='text-base text-neutral1'><Translate tKey="footer-top-courses" Tag="span" /></h3>
+            <h3 className='text-base text-neutral1'><span>{t('footer-top-courses')}</span></h3>
             {
                 courses
                 .filter((course:any)=> course.topCourse)
@@ -36,8 +37,8 @@ const Footer = async () => {
                     <Link href={`/courses/${course.slug}`} key={course._id} className='flex items-center gap-3 py-3 px-2 hover:bg-neutral5/5 rounded-lg'>
                         <Image src={urlFor(course?.mainImage).width(400).url()} alt={course.title} width={120} height={64} className='w-32 h-16 object-cover rounded-lg' />
                         <div>
-                        <h4 className='text-sm text-gray1 font-medium'><Translate tKey={`footer-course-title-${course.slug}`} Tag="span" fallback={course?.title} /></h4>
-                        <p className='text-xs text-gray5'><Translate tKey={`footer-course-desc-${course.slug}`} Tag="span" fallback={course?.description} /></p>
+                        <h4 className='text-sm text-gray1 font-medium'><span>{course.title}</span></h4>
+                        <p className='text-xs text-gray5'><span>{course.description}</span></p>
                         </div>
                     </Link>
                 ))
@@ -46,40 +47,40 @@ const Footer = async () => {
         </div>
         <div className="md:w-1/6">
         <div className="w-full mb-10">
-        <h3 className='text-base text-neutral1 mb-3'><Translate tKey="footer-other-courses" Tag="span" /></h3>
+        <h3 className='text-base text-neutral1 mb-3'><span>{t('footer-other-courses')}</span></h3>
         <ul className='space-y-2'>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-adv-pashto" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-adv-pashto')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-children" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-children')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-conv-pashto" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-conv-pashto')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-writing" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-writing')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-reading" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-reading')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-culture" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-culture')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-history" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-history')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-custom-pashto" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-custom-pashto')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-urdu-grammar" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-urdu-grammar')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-arabic-course" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-arabic-course')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-english-grammar" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-english-grammar')}</span></Link>
             </li>
 
         </ul>
@@ -88,37 +89,37 @@ const Footer = async () => {
         </div>
         <div className="md:w-1/5">
         <div className="w-full mb-10">
-        <h3 className='text-base text-neutral1 mb-3'><Translate tKey="footer-languages" Tag="span" /></h3>
+        <h3 className='text-base text-neutral1 mb-3'><span>{t('footer-languages')}</span></h3>
         <ul className='space-y-1'>
             <li>
-                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-pashto-language" Tag="span" /></Link>
+                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><span>{t('footer-pashto-language')}</span></Link>
             </li>
             <li>
-                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-urdu-language" Tag="span" /></Link>
+                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><span>{t('footer-urdu-language')}</span></Link>
             </li>
             <li>
-                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-arabic-language" Tag="span" /></Link>
+                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><span>{t('footer-arabic-language')}</span></Link>
             </li>
             <li>
-                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-english-language" Tag="span" /></Link>
+                <Link href='/courses' className='text-sm text-gray5 hover:text-white'><span>{t('footer-english-language')}</span></Link>
             </li>
            
         </ul>
         </div>
         <div className="w-full">
-        <h3 className='text-base text-neutral1 mb-3'><Translate tKey="footer-company" Tag="span" /></h3>
+        <h3 className='text-base text-neutral1 mb-3'><span>{t('footer-company')}</span></h3>
         <ul className='space-y-1'>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-mission" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-mission')}</span></Link>
             </li>
             <li>
-                <Link href='/testimonials' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-testimonials" Tag="span" /></Link>
+                <Link href='/testimonials' className='text-sm text-gray5 hover:text-white'><span>{t('footer-testimonials')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-success-stories" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-success-stories')}</span></Link>
             </li>
             <li>
-                <Link href='#' className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-contact-us" Tag="span" /></Link>
+                <Link href='#' className='text-sm text-gray5 hover:text-white'><span>{t('footer-contact-us')}</span></Link>
             </li>
         </ul>
         </div>
@@ -126,11 +127,11 @@ const Footer = async () => {
         </div>
     </div>
     <div className="w-full lg:mt-20 mt-10 flex md:flex-row flex-col items-start gap-4 md:items-center justify-between">
-        <p className='text-sm text-gray5 max-w-[425px]'>© 2025 <Translate tKey="footer-all-rights" Tag="span" />
+        <p className='text-sm text-gray5 max-w-[425px]'>© 2025 <span>{t('footer-all-rights')}</span>
           </p>
            <div className="flex items-center gap-2">
-            <Link href="#" className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-privacy-policy" Tag="span" /></Link>
-            <Link href="#" className='text-sm text-gray5 hover:text-white'><Translate tKey="footer-terms-service" Tag="span" /></Link>
+            <Link href="#" className='text-sm text-gray5 hover:text-white'><span>{t('footer-privacy-policy')}</span></Link>
+            <Link href="#" className='text-sm text-gray5 hover:text-white'><span>{t('footer-terms-service')}</span></Link>
            </div>
            <ul className='flex items-center gap-3'>
             <li>
@@ -165,5 +166,3 @@ const Footer = async () => {
     </footer>
   )
 }
-
-export default Footer

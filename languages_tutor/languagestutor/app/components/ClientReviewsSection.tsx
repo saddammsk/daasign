@@ -2,9 +2,11 @@ import React from 'react'
 import ClientReview from './ClientReview'
 import { sanityClient } from '../lib/sanity'
 import { reviewsQuery } from '../lib/queries'
+import { getTranslations } from 'next-intl/server'
 
-const ClientReviewsSection = async () => {
-    const reviews = await sanityClient.fetch(reviewsQuery)
+export default async function ClientReviewsSection() {
+  const t = await getTranslations()
+  const reviews = await sanityClient.fetch(reviewsQuery)
 
   return (
     <section className="lg:pb-20 pb-10 w-full">
@@ -16,5 +18,3 @@ const ClientReviewsSection = async () => {
     </section>
   )
 }
-
-export default ClientReviewsSection

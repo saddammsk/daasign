@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import WhatsappInput from './CountryCodeInput'
+import { useTranslations } from 'next-intl' 
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -25,7 +26,7 @@ type FormValues = z.infer<typeof formSchema>
 export default function DemoFormPopup() {
   const { isOpenForm, setIsOpenForm } = useGlobalContext()
   const [loading, setLoading] = useState(false)
-
+  const t = useTranslations()
   const methods = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -88,35 +89,35 @@ export default function DemoFormPopup() {
                 <div className="flex flex-col gap-8">
                   <div className="w-full grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-5">
                     <div className="w-full">
-                      <label htmlFor="firstName" className="text-gray7 text-sm mb-2 block font-medium">First name</label>
+                      <label htmlFor="firstName" className="text-gray7 text-sm mb-2 block font-medium">{t('first_name')}</label>
                       <input
                         {...register('firstName')}
                         id="firstName"
                         className="w-full rounded-md shadow py-2 px-3 text-sm font-medium text-gray-900 border border-gray1 focus:outline-none"
-                        placeholder="First name"
+                        placeholder={t('first_name')}
                       />
                       {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
                     </div>
 
                     <div className="w-full">
-                      <label htmlFor="lastName" className="text-gray7 text-sm mb-2 block font-medium">Last name</label>
+                      <label htmlFor="lastName" className="text-gray7 text-sm mb-2 block font-medium">{t('last_name')}</label>
                       <input
                         {...register('lastName')}
                         id="lastName"
                         className="w-full rounded-md shadow py-2 px-3 text-sm font-medium text-gray-900 border border-gray1 focus:outline-none"
-                        placeholder="Last name"
+                        placeholder={t('last_name')}
                       />
                       {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
                     </div>
                   </div>
 
                   <div className="w-full">
-                    <label htmlFor="email" className="text-gray7 text-sm mb-2 block font-medium">Email</label>
+                    <label htmlFor="email" className="text-gray7 text-sm mb-2 block font-medium">{t('email')}</label>
                     <input
                       {...register('email')}
                       id="email"
                       className="w-full rounded-md shadow py-2 px-3 text-sm font-medium text-gray-900 border border-gray1 focus:outline-none"
-                      placeholder="Enter your email"
+                      placeholder={t('enter_your_email')}
                     />
                     {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                   </div>
@@ -126,27 +127,27 @@ export default function DemoFormPopup() {
                   </div>
 
                   <div className="w-full">
-                    <label htmlFor="course" className="text-gray7 text-sm mb-2 block font-medium">Course</label>
+                    <label htmlFor="course" className="text-gray7 text-sm mb-2 block font-medium">{t('course')}</label>
                     <select
                       {...register('course')}
                       id="course"
                       className="w-full shadow rounded-md py-2.5 px-3 text-sm font-medium text-gray7/60 border border-gray1 focus:outline-none"
                     >
-                      <option value="">Select course to enroll</option>
-                      <option value="Pashto">Pashto</option>
-                      <option value="Arabic">Arabic</option>
-                      <option value="Urdu">Urdu</option>
-                      <option value="English">English</option>
+                      <option value="">{t('select_course_to_enroll')}</option>
+                      <option value="Pashto">{t('pashto')}</option>
+                      <option value="Arabic">{t('arabic')}</option>
+                      <option value="Urdu">{t('urdu')}</option>
+                      <option value="English">{t('english')}</option>
                     </select>
                     {errors.course && <p className="text-red-500 text-sm">{errors.course.message}</p>}
                   </div>
 
                   <div className="w-full">
-                    <label htmlFor="message" className="text-gray7 text-sm mb-2 block font-medium">Message</label>
+                    <label htmlFor="message" className="text-gray7 text-sm mb-2 block font-medium">{t('message')}</label>
                     <textarea
                       {...register('message')}
                       id="message"
-                      placeholder="Type your message here"
+                      placeholder={t('type_your_message_here')}
                       className="w-full focus:outline-none p-3 border border-gray6 shadow rounded-lg h-32"
                     />
                   </div>
@@ -155,7 +156,7 @@ export default function DemoFormPopup() {
                     <div className="flex items-center gap-2">
                       <input {...register('privacyAccepted')} type="checkbox" id="Privacy" className="border-gray6" />
                       <label htmlFor="Privacy" className="text-gray7 text-sm">
-                        By reaching out to us, you agree to our <a href="#" className="text-blue1">Privacy Policy.</a>
+                        {t('privacy_policy')}
                       </label>
                     </div>
                     {errors.privacyAccepted && <p className="text-red-500 text-sm">{errors.privacyAccepted.message}</p>}
@@ -165,7 +166,7 @@ export default function DemoFormPopup() {
                     type="submit"
                     className="inline-flex justify-center items-center gap-2 rounded-md bg-gradient-to-t from-primary3 to-[#AFD86B] py-3 px-6 w-full text-base font-semibold text-white shadow-inner focus:outline-none"
                   >
-                    {!loading ? 'Book Demo Class' : 'Please wait...'}
+                      {!loading ? t('book_demo_class') : t('please_wait')}
                   </Button>
                 </div>
               </form>

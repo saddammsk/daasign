@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
+import { useTranslations } from 'next-intl' 
 
 
 export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
   const [expandedStates, setExpandedStates] = useState<Record<string, boolean>>({});
   const [expandAll, setExpandAll] = useState(false);
-
+  const t = useTranslations()
   const toggleDisclosure = (id: string) => {
     setExpandedStates(prev => ({
       ...prev,
@@ -41,9 +41,9 @@ export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
  
       {/* Expand All Button */}
       <div onClick={handleExpandAll} className="w-full flex items-center justify-between cursor-pointer mb-5">
-        <h3 className='text-2xl text-black font-semibold mb-4'>Curriculum</h3>
+        <h3 className='text-2xl text-black font-semibold mb-4'>{t('curriculum')}</h3>
         <div className="flex items-center gap-1">
-          <span className='text-sm text-primary1 font-medium'>{!expandAll ? 'Expand all' : 'Collapse all'}</span>
+          <span className='text-sm text-primary1 font-medium'>{!expandAll ? t('expand_all') : t('collapse_all')}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width={20} height={21} fill="none" viewBox="0 0 20 21">
             <path d="M15 8.5L10 13.5L5 8.5" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -53,12 +53,12 @@ export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
       <div className="w-full flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
           <Image src="/cf_collection.svg" width={20} height={20} alt='no-img' />
-          <p className='text-sm text-gray5'><span>{curriculum.length}</span> Modules</p>
+          <p className='text-sm text-gray5'><span>{curriculum.length}</span> {t('modules')}</p>
         </div>
         <div className="flex items-center w-fit gap-2">
           <div className="flex items-center gap-2">
             <Image src="/d_book-open.svg" width={20} height={20} alt='no-img' />
-            <p className='text-sm text-gray5 flex gap-1'><span>{totalLectures}</span> <span className="hidden md:block">Lectures</span></p>
+            <p className='text-sm text-gray5 flex gap-1'><span>{totalLectures}</span> <span className="hidden md:block">{t('lectures')}</span></p>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
                   <div className="flex items-center gap-2.5">
                     <span className="md:text-lg text-base text-start font-semibold text-neutral2">{module.title}</span>
                     {module.previewlink && (
-                      <span className="text-sm font-medium bg-primary/10 px-2 py-1 rounded-full text-primary1">Preview</span>
+                      <span className="text-sm font-medium bg-primary/10 px-2 py-1 rounded-full text-primary1">{t('preview')}</span>
                     )}
                   </div>
                 </div>
@@ -118,7 +118,7 @@ export default function FaqsLectures({ curriculum }: { curriculum: any[] }) {
                           </div>
                           <div className="flex items-center sm:gap-3 gap-2">
                             {lecture.previewUrl && (
-                              <span className='text-primary1 bg-primary/10 rounded-full sm:text-sm text-xs px-2 py-1'>Preview</span>
+                                <span className='text-primary1 bg-primary/10 rounded-full sm:text-sm text-xs px-2 py-1'>{t('preview')}</span>
                             )}
                             <span className='sm:text-base text-sm text-gray5'>{lecture.duration}</span>
                           </div>

@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import Translate from './common/Translate'
+import { useTranslations } from 'next-intl'
 
-const NewsLetter = () => {
+export default function NewsLetter() {
+  const t = useTranslations()
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -49,18 +50,16 @@ const NewsLetter = () => {
           className="md:w-fit w-full text-center items-center justify-center inline-flex text-neutral5 bg-primary1 hover:bg-slate-800 border border-[#fff3] font-medium transition-all duration-200 py-2.5 px-5 rounded-lg"
         > 
         {!loading ? 
-          <Translate tKey="newsletter-subscribe" Tag="span" className='whitespace-nowrap' />
+          <span>{t('newsletter-subscribe')}</span>
         :
-          <Translate tKey="newsletter-wait" Tag="span" className='whitespace-nowrap' />
+          <span>{t('newsletter-wait')}</span>
         }
         </button>
 
       </form>
       <p className="text-xs text-center text-gray3 mt-6 font-medium max-w-[470px] mx-auto">
-        <Translate tKey="newsletter-terms" Tag="span" />
+        <span>{t('newsletter-terms')}</span>
       </p>
     </div>
   )
-}
-
-export default NewsLetter
+  }

@@ -11,13 +11,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { sanityClient } from '../lib/sanity'
 import { allCoursesQuery } from '../lib/queries'
 import { useGlobalContext } from '../context/GlobalContext'
-
+import { useTranslations } from 'next-intl'
 const sortOptions = [
-  { id: 1, name: 'Popular' },
-  { id: 2, name: 'New' },
-  { id: 3, name: 'Top Rated' },
-  { id: 4, name: 'Price: Low - High' },
-  { id: 5, name: 'Price: High - Low' },
+  { id: 1, name: 'sort_popular' },
+  { id: 2, name: 'sort_new' },
+  { id: 3, name: 'sort_top_rated' },
+  { id: 4, name: 'sort_price_low_high' },
+  { id: 5, name: 'sort_price_high_low' },
 ]
 
 interface CourseItem {
@@ -30,7 +30,7 @@ export default function SortBy() {
   const [selected, setSelected] = useState(sortOptions[0]) 
   const [courses, setCourses] = useState<CourseItem[]>([])
   const { setFilteredCourses } = useGlobalContext()
-
+  const t = useTranslations()
   useEffect(() => {
     const fetchCourses = async () => {
       const data = await sanityClient.fetch(allCoursesQuery)
@@ -45,17 +45,17 @@ export default function SortBy() {
     const sorted = [...courses]
 
     switch (selected.name) {
-      case 'Popular':
+      case 'sort_popular':
         return sorted
-      case 'Top Rated':
+      case 'sort_top_rated':
         return sorted.sort((a, b) => b.review - a.review)
-      case 'New':
+      case 'sort_new':
         return sorted.sort(
           (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
-      case 'Price: Low - High':
+      case 'sort_price_low_high':
         return sorted.sort((a, b) => a.price - b.price)
-      case 'Price: High - Low':
+      case 'sort_price_high_low':
         return sorted.sort((a, b) => b.price - a.price)
       default:
         return sorted
@@ -72,7 +72,7 @@ export default function SortBy() {
     <div className="inline-flex flex-col items-start gap-4">
       <div className="inline-flex items-center justify-center">
         <span className="whitespace-nowrap text-base text-gray5 font-medium mr-2">
-          Sort by:
+          <span>{t('sort_by')}</span>
         </span>
         <Listbox value={selected} onChange={setSelected}>
           <ListboxButton
@@ -81,7 +81,7 @@ export default function SortBy() {
               'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
             )}
           >
-            {selected.name}
+            {selected && <span>{t(selected.name)}</span>}
             <ChevronDownIcon
               className="group pointer-events-none absolute top-2 right-2.5 size-5 fill-gray5"
               aria-hidden="true"
@@ -103,7 +103,7 @@ export default function SortBy() {
               >
                 <CheckIcon className="invisible size-4 fill-primary1 group-data-[selected]:visible" />
                 <div className="text-base text-gray5 group-data-[selected]:text-primary1">
-                  {option.name}
+                  <span>{t(option.name)}</span>
                 </div>
               </ListboxOption>
             ))}

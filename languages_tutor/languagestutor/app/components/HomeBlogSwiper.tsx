@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { allBlogQuery } from '../lib/queries'
 import { sanityClient } from '../lib/sanity'
 import { urlFor } from '../lib/sanityImage'
-
+import { useTranslations } from 'next-intl'
 interface BlogPost {
   _id: string
   title: string
@@ -24,10 +24,10 @@ interface BlogPost {
   }
 }
 
-export const HomeBlogSwiper = () => {
+export default function HomeBlogSwiper() {
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
-
+  const t = useTranslations()
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -43,7 +43,7 @@ export const HomeBlogSwiper = () => {
     fetchPosts()
   }, [])
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <div>{t('loading')}</div>
 
   const Slides = posts.map((post) => (
     <div
@@ -103,4 +103,4 @@ export const HomeBlogSwiper = () => {
       />
     </div>
   )
-}
+  }

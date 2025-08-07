@@ -2,9 +2,10 @@
 import React,{useState} from 'react'
 import { LightBox } from './LightBox'
 import Image from 'next/image'
-import Translate from './common/Translate'
-
-export const IntroVideoModel = () => {
+import { useTranslations } from 'next-intl'
+  
+export default function IntroVideoModel() {
+    const t = useTranslations()
     const [IsOpenModel ,setIsOpenModel] = useState(false)
 
   return (
@@ -19,11 +20,11 @@ export const IntroVideoModel = () => {
            isAutoplay={true}
          />
            <div className="max-w-[600px]">
-           <h2 className="md:text-5xl text-28 leading-tight font-semibold text-white"><Translate tKey="intro-video-heading" Tag="span" /></h2>
-           <p className="md:text-lg texts-m text-white mb-2 sm:mt-5 mt-3"><Translate tKey="intro-video-desc" Tag="span" /></p>
+           <h2 className="md:text-5xl text-28 leading-tight font-semibold text-white"><span>{t('intro-video-heading')}</span></h2>
+           <p className="md:text-lg texts-m text-white mb-2 sm:mt-5 mt-3"><span>{t('intro-video-desc')}</span></p>
            <div className="inline-flex text-base text-white">
-             <img src="play-icon.svg" alt="play-icon" />
-             <Translate tKey="intro-video-watch" Tag="span" />
+             <Image src="/play-icon.svg" alt="play-icon" width={20} height={20} />
+             <span>{t('intro-video-watch')}</span>
            </div>
            </div>
            </div>

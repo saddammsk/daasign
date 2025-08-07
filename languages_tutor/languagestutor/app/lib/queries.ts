@@ -40,92 +40,92 @@ reviews[]->{
 }
 `
 
-export const getSingleCourseQuery = () => ({
-query: `
-  *[_type == "course" && slug.current == $slug][0]{
-    _id,
-    title,
-    featured,
-    description,
-    body,
-    mainImage,
-    createdAt,
-publishedAt,
-    certificate,
-    purchasedCount,
-    review,
-    level,
-    price,
-    languages,
-    duration,
-    WhatYouLearn,
-    "slug": slug.current,
-    courseCategory[]->{
+export const getSingleCourseQuery = (slug: string) => ({
+  query: `
+    *[_type == "course" && slug.current == $slug][0]{
       _id,
       title,
-      "slug": slug.current
-    },
-    instructor->{
-    _id,
-    name,
-    "slug": slug.current,
-      position,
-      image,
-      twitter,
-      facebook,
-      instagram,
-      youtube,
-      linkedIn,
-      dribbble,
-      bio,
-  },
-  testimonialsReviews[]{
-      quality,
-      supportive,
-      following,
-      instructor,
-      newKnowledge,
-      recommendCourse
-    },
-  video {
-      url,
-      poster {
-        alt,
-        "image": asset->url
-      }
-    },
-    curriculum[]{
-      title,
+      featured,
       description,
-      previewlink,
-      lectures[]{
-        title,
-        videoUrl,
-        previewUrl,
-        duration
-      }
-      },
-    packages[]{
-    name,
-    description,
-    price,
-    inclusion,
-    access
-    },
-
-  userReviews[]->{
-      user,
+      body,
+      mainImage,
+      createdAt,
+      publishedAt,
+      certificate,
+      purchasedCount,
+      review,
+      level,
+      price,
+      languages,
+      duration,
+      WhatYouLearn,
       "slug": slug.current,
-      userAvatar,
-      userCourse,
-      location,
-      rating,
-      comment
+      courseCategory[]->{
+        _id,
+        title,
+        "slug": slug.current
+      },
+      instructor->{
+        _id,
+        name,
+        "slug": slug.current,
+        position,
+        image,
+        twitter,
+        facebook,
+        instagram,
+        youtube,
+        linkedIn,
+        dribbble,
+        bio
+      },
+      testimonialsReviews[]{
+        quality,
+        supportive,
+        following,
+        instructor,
+        newKnowledge,
+        recommendCourse
+      },
+      video {
+        url,
+        poster {
+          alt,
+          "image": asset->url
+        }
+      },
+      curriculum[]{
+        title,
+        description,
+        previewlink,
+        lectures[]{
+          title,
+          videoUrl,
+          previewUrl,
+          duration
+        }
+      },
+      packages[]{
+        name,
+        description,
+        price,
+        inclusion,
+        access
+      },
+      userReviews[]->{
+        user,
+        "slug": slug.current,
+        userAvatar,
+        userCourse,
+        location,
+        rating,
+        comment
+      }
     }
-
-  }
-`,
+  `,
+  params: { slug }
 });
+
 
 export const getCourseReviewsQuery = (slug: string, page: number = 1, pageSize: number = 3) => {
   const start = (page - 1) * pageSize;
@@ -286,7 +286,7 @@ export const allBlogQuery = `
 }
 `
 
-export const getSingleBlogQuery = () => ({
+export const getSingleBlogQuery = (slug: string) => ({
   query: `
     *[_type == "blog" && slug.current == $slug][0]{
       _id,
@@ -303,4 +303,6 @@ export const getSingleBlogQuery = () => ({
       blogCategory[]->{ _id, title, "slug": slug.current }
     }
   `,
+  params: { slug },
 });
+

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import {clsx} from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 
 
@@ -13,13 +14,13 @@ import Image from 'next/image'
 
 export default function UXDesignDropdown() {
   const [isOpen, setIsOpen] = useState(false)
-
+  const t = useTranslations()
   return (
     <Menu as="div" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
       {() => (
         <>
           <MenuButton as="button" className={clsx(isOpen && 'text-primary',"px-2 py-2.5 text-sm font-medium data-[hover]:text-primary transition-all duration-200 text-gray5 flex items-center gap-1.5 rounded-lg")}>
-          UX Design
+          {t('ux_design')}
           <CaretDown weight='bold' className={isOpen ? 'rotate-180 transition-rotate duration-200' :'rotate-0 transition-rotate duration-200'} size={14} />
           </MenuButton>
           <AnimatePresence>
@@ -36,17 +37,17 @@ export default function UXDesignDropdown() {
                     <ul className='w-full'>
                       <li>
                           <Link href="/" className='block text-sm text-gray1 group hover:text-neutral1 gap-3 py-2 transition-all duration-200 rounded-lg'>
-                          UX Design Courses
+                          {t('ux_design_courses')}
                           </Link>
                       </li>
                       <li>
                           <Link href="/" className='block text-sm text-gray1 group hover:text-neutral1 gap-3 py-2 transition-all duration-200 rounded-lg'>
-                          UX Design Products
+                          {t('ux_design_products')}
                           </Link>
                       </li>
                       <li>
                           <Link href="/" className='block text-sm text-gray1 group hover:text-neutral1 gap-3 py-2 transition-all duration-200 rounded-lg'>
-                          UX Design Articles
+                          {t('ux_design_articles')}
                           </Link>
                       </li>
 

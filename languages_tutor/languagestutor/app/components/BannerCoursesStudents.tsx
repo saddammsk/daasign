@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
-import Translate from './common/Translate'
+import { getTranslations } from 'next-intl/server';
 
-export const BannerCoursesStudents = () => {
+export default async function BannerCoursesStudents() {
+  const t = await getTranslations();
   return (
     <div className='banner-marquee-main flex items-center gap-4'>
       <div className="banner-marquee flex lg:flex-col flex-row gap-4">
@@ -13,16 +14,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-2.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-abhishek" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-abhishek')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -33,16 +34,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-1.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-angel" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-angel')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -53,16 +54,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-3.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-miles" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-miles')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -73,16 +74,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-4.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+              <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-zohdi" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-zohdi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-english" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-english')}</span></p>
             </div>
           </div>
         </div>
@@ -96,16 +97,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-2.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-abhishek" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-abhishek')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -116,16 +117,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-1.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-angel" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-angel')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -136,16 +137,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-3.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-miles" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-miles')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+              <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -156,16 +157,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-4.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-zohdi" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-zohdi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-english" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-english')}</span></p>
             </div>
           </div>
         </div>
@@ -179,16 +180,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-5.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-raymond" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-raymond')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -199,16 +200,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-6.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-preston" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-preston')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -219,16 +220,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-7.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-pranavi" Tag="span" /></p>
+              <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-pranavi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -239,16 +240,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-8.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-alyssa" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-alyssa')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -262,16 +263,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-5.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-raymond" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-raymond')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -282,16 +283,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-6.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-preston" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-preston')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+                <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>
@@ -302,16 +303,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-7.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-pranavi" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-pranavi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -322,16 +323,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-8.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-alyssa" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-alyssa')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>
@@ -346,16 +347,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-5.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-raymond" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-raymond')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -366,16 +367,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-6.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-preston" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-preston')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>
@@ -386,16 +387,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-7.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-pranavi" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-pranavi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -406,16 +407,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-8.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-alyssa" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-alyssa')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>
@@ -428,16 +429,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-5.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+                <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-raymond" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-raymond')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-pashto" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-pashto')}</span></p>
             </div>
           </div>
         </div>
@@ -448,16 +449,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-6.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-preston" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-preston')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>
@@ -468,16 +469,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-7.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-pranavi" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-pranavi')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-urdu" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-urdu')}</span></p>
             </div>
           </div>
         </div>
@@ -488,16 +489,16 @@ export const BannerCoursesStudents = () => {
           <Image width={210} height={260} src="/marquee-card-img-8.png" className='absolute rounded-2xl top-0 left-0 w-full h-full z-0' alt="no img" />
           <div className="bg-white verified- transition-all duration-200 absolute top-3 right-3 rounded-full z-20 p-1 w-6 overflow-hidden pr-1 gap-1 flex items-center">
             <img src="verified-icon.svg" alt="course icon" className='min-w-4' />
-            <p className='text-black text-xs font-medium whitespace-nowrap'><Translate tKey="banner-verified-student" Tag="span" /></p>
+            <p className='text-black text-xs font-medium whitespace-nowrap'><span>{t('banner-verified-student')}</span></p>
           </div>
           <div className='relative z-10 p-4'>
             <div className="flex items-center gap-1 mb-1">
             <img src="user-icon.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-student-alyssa" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-student-alyssa')}</span></p>
             </div>
             <div className="flex items-center gap-1 mb-1">
             <img src="academic-cap.svg" alt="user icon" />
-            <p className='text-neutral6 text-sm font-medium'><Translate tKey="banner-course-arabic" Tag="span" /></p>
+            <p className='text-neutral6 text-sm font-medium'><span>{t('banner-course-arabic')}</span></p>
             </div>
           </div>
         </div>

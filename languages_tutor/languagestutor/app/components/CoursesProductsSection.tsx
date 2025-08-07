@@ -7,13 +7,12 @@ import { CourseCard } from './CourseCard';
 import { sanityClient } from "../lib/sanity";
 import { featuredCoursesQuery, languagesCoursesQuery } from "../lib/queries";
 import { urlFor } from '../lib/sanityImage';
-import { useTranslation } from 'react-i18next';
-import Translate from './common/Translate';
+import { useTranslations } from 'next-intl';
 
 const CoursesProductsSection = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [languagesCourses, setLanguagesCourses] = useState<any[]>([]);
-  const { i18n, t } = useTranslation('common');
+  const t = useTranslations();
 
   const getTotalLectures = (curriculum: any[] = []): number => {
     return curriculum.reduce((total: number, module: any) => {
@@ -46,10 +45,10 @@ const CoursesProductsSection = () => {
           <TabGroup>
             <TabList className="inline-flex border p-1 border-neutral1 rounded-xl bg-neutral5">
               <Tab className="rounded-xl py-1.5 px-6 text-base font-medium text-gray5 focus:outline-none data-[selected]:text-black3 data-[selected]:shadow">
-                <Translate tKey="courses-products-tab-courses" Tag="span" />
+                <span>{t('courses-products-tab-courses')}</span>
               </Tab>
               <Tab className="rounded-xl py-1.5 px-6 text-base font-medium text-gray5 focus:outline-none data-[selected]:text-black3 data-[selected]:shadow">
-                <Translate tKey="courses-products-tab-languages" Tag="span" />
+                <span>{t('courses-products-tab-languages')}</span>
               </Tab>
             </TabList>
             <TabPanels className="mt-3">
@@ -58,10 +57,10 @@ const CoursesProductsSection = () => {
                   <div className="flex lg:flex-row flex-col items-start lg:items-center justify-between gap-6">
                     <div className="max-w-[600px]">
                       <h3 className="lg:text-5xl text-28 font-semibold mb-4 text-neutral2">
-                        <Translate tKey="courses-products-heading" Tag="span" />
+                        <span>{t('courses-products-heading')}</span>
                       </h3>
                       <p className="md:text-lg text-base text-gray3">
-                        <Translate tKey="courses-products-desc" Tag="span" />
+                        <span>{t('courses-products-desc')}</span>
                       </p>
                     </div>
                     <PrimaryLinkGradient href="/courses" className="text-base py-3">
@@ -75,7 +74,7 @@ const CoursesProductsSection = () => {
                         .slice(0, 3)
                         .map((course: any) => (
                           <CourseCard
-                            key={course.title?.[i18n.language] || course.title?.en}
+                            key={course._id}
                             href={`/courses/${course.slug}`}
                             img={urlFor(course?.mainImage).width(400).url()}
                             title={course?.title}
@@ -96,10 +95,10 @@ const CoursesProductsSection = () => {
                   <div className="flex lg:flex-row flex-col items-start lg:items-center justify-between gap-6">
                     <div className="max-w-[600px]">
                       <h3 className="lg:text-5xl text-28 font-semibold mb-4 text-neutral2">
-                        <Translate tKey="courses-products-heading" Tag="span" />
+                          <span>{t('courses-products-heading')}</span>
                       </h3>
                       <p className="md:text-lg text-base text-gray3">
-                        <Translate tKey="courses-products-desc" Tag="span" />
+                        <span>{t('courses-products-desc')}</span>
                       </p>
                     </div>
                     <PrimaryLinkGradient href="/courses" className="text-base py-3">
@@ -112,7 +111,7 @@ const CoursesProductsSection = () => {
                         .slice(0, 3)
                         .map((course: any) => (
                           <CourseCard
-                            key={course.title?.[i18n.language] || course.title?.en}
+                            key={course._id}
                             href={`/courses/${course.slug}`}
                             img={urlFor(course?.mainImage).width(400).url()}
                             title={course?.title}

@@ -3,6 +3,8 @@ import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import discountlogo from '../../public/discount-logo.svg'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
+
 
 export default function DiscountPopup() {
   let [isOpen, setIsOpen] = useState(false)
@@ -25,6 +27,8 @@ export default function DiscountPopup() {
       clearInterval(timer)
     }
   },[])
+
+  const t = useTranslations()
 
   return (
     <>
@@ -59,10 +63,10 @@ export default function DiscountPopup() {
                </div>
 
               <DialogTitle as="h3" className="text-32 mb-2 text-neutral2 font-semibold text-center">
-              Get 10% off on your first purchase
+              <span>{t('discount_title')}</span>
               </DialogTitle>
               <p className="mt-2 text-sm font-medium text-gray5 text-center mb-6">
-              By subscribing to our newsletter you will be the first to hear about early access periods, discounts and more.
+                {t('discount_subtitle')}
               </p>
               <form >
               <div className="mt-4 flex flex-col gap-3">
@@ -70,18 +74,20 @@ export default function DiscountPopup() {
                 required
                   type="email"
                   className="w-full rounded-md py-2 px-3 text-sm/6 font-medium text-gray-900 border border-gray1 focus:outline-none"
-                  placeholder="Enter email"
+                  placeholder={t('discount_placeholder')}
+                  aria-label="email"
                 />
                 <Button
                 type="submit"
                   className="inline-flex justify-center items-center gap-2 rounded-md bg-gradient-to-t hover:from-primary2 hover:to-primary1 from-primary3 to-primary4 py-3 px-6 w-full text-center text-base font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-gray-700"
                 >
-                 Get discount code
+                 {t('discount_button')}
                 </Button>
               </div>
               </form>
 
-              <p className="text-center text-xs text-gray5 font-medium mt-6">By subscribing you agree to with our Privacy Policy and provide consent to receive updates from the Designership.
+              <p className="text-center text-xs text-gray5 font-medium mt-6">
+                {t('discount_privacy')}
               </p>
             </DialogPanel>
           </div>

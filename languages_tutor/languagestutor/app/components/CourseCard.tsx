@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useTranslations } from 'next-intl' 
+
 
 interface Props {
     href: string
@@ -16,7 +18,8 @@ interface Props {
 }
 
 export const CourseCard = ({href, img, title, users, rating, level, description, lessons, duration}: Props) => {
-  return (
+  const t = useTranslations()
+    return (
     <Link href={href} className='w-full p-3 flex flex-col bg-white rounded-2xl transition-all duration-300 hover:drop-shadow-lg border border-neutral3'>
         <div className="w-full">
         <Image src={img} width={397} height={224} className='w-full object-cover object-center rounded-lg h-[224px]' alt={title}  />
@@ -46,8 +49,8 @@ export const CourseCard = ({href, img, title, users, rating, level, description,
         </ul>
         <p className='text-sm font-medium mt-1 text-gray3'>{description}</p>
         <div className="flex items-center justify-start gap-6 pt-4 mt-auto">
-        <span className='font-semibold  block'>{lessons} Lessons</span>
-        <span className='font-semibold text-neutral2'>{duration} Weeks</span>
+        <span className='font-semibold  block'>{lessons} {t('lessons')}</span>
+        <span className='font-semibold text-neutral2'>{duration} {t('weeks')}</span>
         </div>
         </div>
 

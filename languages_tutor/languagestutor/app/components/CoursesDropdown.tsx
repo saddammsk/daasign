@@ -9,15 +9,14 @@ import Image from 'next/image'
 import { sanityClient } from '../lib/sanity'
 import { featuredCoursesQuery } from '../lib/queries'
 import { urlFor } from '../lib/sanityImage'
-import Translate from './common/Translate'
-import { useTranslation } from 'react-i18next'
+import { useTranslations } from 'next-intl';
 
 
 
-export default function CoursesDropdown() {
+  export default function CoursesDropdown() {
   const [isOpen, setIsOpen] = useState(false)
   const [courses, setCourses] = useState<any[]>([]);
-  const { i18n } = useTranslation();
+  const t = useTranslations();
 
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function CoursesDropdown() {
         <>
           <MenuButton as="button" className={clsx(isOpen && 'text-primary',"p-2 py-2.5 lg:w-fit w-full text-sm font-medium px-4 data-[hover]:text-primary transition-all duration-200 text-gray5 flex items-center gap-1.5 border border-neutral2 rounded-lg")}>
           <Link href="/courses" >
-           <Translate tKey="courses" Tag="span" />
+           <span>{t('courses')}</span>
            </Link>
           <CaretDown weight='bold' className={isOpen ? 'rotate-180 transition-rotate duration-200' :'rotate-0 transition-rotate duration-200'} size={14} />
           </MenuButton>
@@ -58,7 +57,7 @@ export default function CoursesDropdown() {
                     <div className="bg-black2 md:w-3/5 border-r border-black3 pt-5 pb-8 px-3">
                     <div className="w-full flex flex-col gap-2">
                     <div className="w-full">
-                    <h4 className='text-xs text-gray5 my-1'> <Translate tKey="courses" Tag="span" /></h4>
+                    <h4 className='text-xs text-gray5 my-1'> <span>{t('courses')}</span></h4>
                     {courses
                         .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
                         .slice(0, 3)
@@ -70,14 +69,13 @@ export default function CoursesDropdown() {
                           <div className="">
                           <div className="flex items-center gap-2">
                                 <h3 className='font-medium text-sm mb-1'>{course?.title}</h3>
-                                
                                 {(() => {
                                   const createdAtDate = new Date(course?.createdAt);
                                   const now = new Date();
                                   const diffInDays = (now.getTime() - createdAtDate.getTime()) / (1000 * 60 * 60 * 24);
                                   if (diffInDays <= 30) {
                                     return (
-                                      <span className='text-primary1 text-xs bg-primary px-2.5 rounded-full'>New</span>
+                                      <span className='text-primary1 text-xs bg-primary px-2.5 rounded-full'>{t('new')}</span>
                                     );
                                   }
                                   return null;
@@ -100,15 +98,14 @@ export default function CoursesDropdown() {
                           </div>
                           </Link>
                         ))}
-               
                     </div>
                     <div className="w-full">
-                    <h4 className='text-xs text-gray5 my-1'>Bundles</h4>
+                      <h4 className='text-xs text-gray5 my-1'>{t('bundles')}</h4>
                     <ul>
                         <li>
                             <Link href="/courses" className='px-4 flex nav-link items-center text-gray1 group hover:text-neutral1 gap-3 py-1.5 transition-all duration-200 hover:bg-hover-nav-link rounded-lg'>
                             <div className="">
-                                <h3 className='font-medium text-sm mb-1'>Pashto & Urdu Languages (Save $60)</h3>
+                                <h3 className='font-medium text-sm mb-1'>{t('pashto_urdu_languages')}</h3>
                                 <ul className='flex items-center gap-3'>
                                     <li className='flex items-center gap-1'>
                                     <img src="/user-group.svg" alt="user group"/>
@@ -120,7 +117,7 @@ export default function CoursesDropdown() {
                                     </li>
                                     <li className='flex items-center gap-1'>
                                     <img src="/chart-bar.svg" alt="user group"/>
-                                    <h5 className='text-xs text-gray5'>Intermediate</h5>
+                                    <h5 className='text-xs text-gray5'>{t('intermediate')}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -129,7 +126,7 @@ export default function CoursesDropdown() {
                         <li>
                             <Link href="/courses" className='px-4 flex nav-link items-center text-gray1 group hover:text-neutral1 gap-3 py-1.5 transition-all duration-200 hover:bg-hover-nav-link rounded-lg'>
                             <div className="">
-                                <h3 className='font-medium text-sm mb-1'>Pashto & Arabic Languages (Save $210)</h3>
+                                <h3 className='font-medium text-sm mb-1'>{t('pashto_arabic_languages')}</h3>
                                 <ul className='flex items-center gap-3'>
                                     <li className='flex items-center gap-1'>
                                     <img src="/user-group.svg" alt="user group"/>
@@ -141,7 +138,7 @@ export default function CoursesDropdown() {
                                     </li>
                                     <li className='flex items-center gap-1'>
                                     <img src="/chart-bar.svg" alt="user group"/>
-                                    <h5 className='text-xs text-gray5'>Intermediate</h5>
+                                    <h5 className='text-xs text-gray5'>{t('intermediate')}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -153,7 +150,7 @@ export default function CoursesDropdown() {
                     </div>
                     </div>
                     <div className="bg-black1 md:w-2/5 pt-5 pb-8 px-3 flex flex-col items-center justify-center">
-                    <h4 className='text-xs text-gray5 mb-2 text-start mr-auto'>The latest news</h4>
+                      <h4 className='text-xs text-gray5 mb-2 text-start mr-auto'>{t('latest_news')}</h4>
                     {courses
                         .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
                         .slice(0, 1)
@@ -173,16 +170,14 @@ export default function CoursesDropdown() {
                                   </li>
                                   <li className='flex items-center gap-1'>
                                   <img src="/Time-icon.svg" alt="user group"/>
-                                  <h5 className='text-xs text-gray5'>7 min read</h5>
+                                    <h5 className='text-xs text-gray5'>{t('7_min_read')}</h5>
                                   </li>
                               </ul>
                               </div>
 
                             </Link>
 
-                        ))}
-              
-                      
+                        ))}          
                     </div>
                 </div>
               </MenuItems>

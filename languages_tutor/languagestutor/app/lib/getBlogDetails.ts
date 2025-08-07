@@ -6,5 +6,3 @@ export async function getBlogDetails(slug: string) {
   const blog = await sanityClient.fetch(query, params);
   return blog;
 }
-
-
