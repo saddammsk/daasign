@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "swiper/swiper-bundle.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #FF3C1C;
+  --color-secondary: #FF1E00;
+  --color-black-1: #151515;
+  --color-gray-1: #B2B2B2;
+  --color-gray-2: #D9D9D999;
+  --color-gray-3: #D9D9D9;
+  --color-gray-4: #313131;
+  --color-gray-5: #B9B9B9;
+  --color-gray-6: #979797;
+  --color-gray-7: #DDDDDD;
+  --color-orange-1: #F9E7E5;
+  --color-brown-1: #6D5B59;
+  --color-brown-2: #B3A19F;
+
+  --text-size-80: 80px;
+  --text-size-64: 64px;
+  --text-size-56: 56px;
+  --text-size-32: 32px;
+  --text-size-28: 28px;
+
+
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 475px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 991px;
+  --breakpoint-xl: 1199px;
+  --breakpoint-2xl: 1365px;
+  --breakpoint-3xl: 1600px;
+
+  --font-manrope: var(--font-manrope);
+  --font-clash-display: var(--font-clash-display);
+  --font-inter-tight: var(--font-inter-tight);
+
+  --animate-marquee-left: marqueeLeft 30s linear infinite;
+  --animate-marquee-right: marqueeRight 30s linear infinite;
+  @keyframes marqueeLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(-100% - 2%));
+    }
+  }
+
+  @keyframes marqueeRight {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(100% - 2%));
+    }
+  }
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+.border-top-gradient-nav {
+  border-top: 2px solid;
+  border-image-source: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.48) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-image-slice: 1;
+  transition: border-image-source 0.3s ease;
+}
+
+
+.border-top-gradient {
+  border-top: 2px solid;
+  border-image-source: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.48) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-image-slice: 1;
+  transition: border-image-source 0.3s ease;
+}
+
+.border-top-gradient:hover {
+  border-image-source: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+
+
