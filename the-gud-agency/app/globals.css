@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-body-bg: #141414;
+  --color-primary: #1AB9A2;
+  --color-secondary: #FB72CC;
+  --color-tertiary: #FEA800;
+  --color-black-1: #141414;
+  --color-black-1200: #151515;
+  --color-red-1200: #D52A2A;
+  --color-Aqua-1: #1AB9A2;
+  --color-black-1000: #191919;
+  --text-size-30: 30px;
+  --text-size-120: 120px;
+  --text-size-50: 50px;
+  --radius-5xl: 50px;
+  --font-annie: var(--font-annie);
+  --font-montserrat: var(--font-montserrat);
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 991px;
+  --breakpoint-xl: 1199px;
+  --breakpoint-2xl: 1365px;
+  --breakpoint-3xl: 2000px;
+}
+
+.marquee div {
+  width: 200%;
+  animation: marquee 50s linear infinite;
+}
+
+.marquee2 div {
+  width: 200%;
+  animation: marquee2 50s linear infinite;
+}
+
+.marquee3 div {
+  width: 220%;
+}
+
+/* keyframe */
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
+
+/* keyframe */
+@keyframes marquee2 {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.select {
+  background-position: right 30px center;
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .contact-sec h2 br {
+    display: none;
+  }
+}
+
+.bubble-on-hover {
+  transition: transform 0.5s ease-in-out;
+}
+
+.bubble-on-hover:hover {
+  transform: translateY(-45px);
+  animation: bounceSimple 0.7s ease-in-out 1;
+}
+
+@keyframes bounceSimple {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-55px);
+  }
+
+  45% {
+    transform: translateY(-35px);
+  }
+
+  60% {
+    transform: translateY(-45px);
+  }
+
+  75% {
+    transform: translateY(-40px);
+  }
+
+  90% {
+    transform: translateY(-45px);
+  }
+
+  100% {
+    transform: translateY(-45px);
+  }
+}.data-focus\:bg-gray-100[data-focus] {
+    background-color: transparent;
+}
