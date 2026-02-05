@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-neulis-sans: "Neulis Sans";
+@theme inline { 
+   --font-neulis-sans: "Neulis Sans";
   --font-segoe: "Segoe UI";
   --color-gray-1000: #E5E7EB;
   --color-gray-1100: #4B5563;
@@ -12,16 +12,28 @@
   --color-gray-1600: #F3F4F6;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
+  --color-red-1100: #FEE2E2;
   --color-white-1000: #DBEAFE;
+  --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
   --color-blue-1100: #1F2937;
   --color-blue-1200: #0F172A;
-  --color-blue-1200: #111827;
+  --color-black-1200: #111827;
   --color-green-1000: #16A34A;
-  /******* 4-2-2028 ******/
-  --color-black12: #111827;
+  --color-green-1100: #166534;
+  --color-green-1200: #DCFCE7;
+  --color-yellow-1000: #FEF9C3;
+  --color-brown-1000: #854D0E;
+  /******* 4-2-2028 ******/ 
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
+  --color-gray1700: #F1F5F9;
+  --color-green12: #166534;
+  --color-lightgreen12: #DCFCE7;
+  --color-brown1200: #854D0E;
+  --color-yellow1200: #FEF9C3;
+  --color-red1200: #991B1B;
+  --color-lightred1200: #FEE2E2;
   /******* 4-2-2028 ******/
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   /******* 4-2-2028 ******/

@@ -13,6 +13,10 @@ type MenuItem = {
 };
 
 /* ================= DATA ================= */
+interface SidebarProps {
+     isOpen: boolean;
+     onClose: () => void;
+}
 
 const mainMenu: MenuItem[] = [
      { label: "Dashboard", icon: "/images/dashboard-icon.svg", href: "/" },
@@ -50,7 +54,7 @@ const salesMenu: MenuItem[] = [
 
 /* ================= COMPONENT ================= */
 
-const Sidebar: React.FC = () => {
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
      const pathname = usePathname();
 
      const renderMenu = (menu: MenuItem[]) => {
@@ -74,14 +78,17 @@ const Sidebar: React.FC = () => {
      };
 
      return (
-          <div className="fixed left-0 top-0 z-99 scrollbar-hide w-full max-w-[256px] h-screen overflow-auto border-r border-gray-1000 bg-white">
-               <div className="flex items-center justify-between p-4 border-b border-gray-1000">
+          <div
+               className={`fixed top-0 z-99 h-screen lg:left-0 w-full max-w-[256px] bg-white border-r border-gray-1000
+        transition-all duration-500 ease-in-out
+        ${isOpen ? "left-0" : "-left-full"}`}
+          >  <div className="flex items-center justify-between p-4 border-b border-gray-1000">
                     <Link href="/">
                          <img src="/images/logo.svg" alt="Logo" />
                     </Link>
-                    <Link href="/">
-                         <img src="/images/left-arrow.svg" alt="Back" />
-                    </Link>
+                    <button onClick={onClose}>
+                         <img src="/images/left-arrow.svg" alt="Close sidebar" />
+                    </button>
                </div>
 
                <div className="p-2">
@@ -97,7 +104,7 @@ const Sidebar: React.FC = () => {
                     </h6>
                     <ul className="space-y-0.5 mb-1">{renderMenu(salesMenu)}</ul>
                </div>
-          </div>
+          </div >
      );
 };
 
